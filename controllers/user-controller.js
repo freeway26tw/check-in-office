@@ -11,6 +11,13 @@ const userController = {
   signIn: (req, res) => {
     res.redirect('/dashboard')
   },
+  logout: async (req, res) => {
+    await req.logout(function (err) {
+      if (err) { return next(err); }
+      req.flash('success_messages', '登出成功!')
+      res.redirect('/signin')
+    })
+  },
   editUser: async (req, res, next) => {
     try {
       const user = await prisma.user.findUnique({
