@@ -4,6 +4,9 @@ const userController = {
   },
   signIn: (req, res) => {
     res.redirect('/punch')
+  },
+  editUser: (req, res) => {
+    
   }
 }
 
