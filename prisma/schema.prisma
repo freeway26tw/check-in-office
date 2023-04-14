@@ -13,7 +13,7 @@ datasource db {
 model User {
   id            String  @id @default(uuid())
   employeeCode String  @unique
-  password      String? @default("acuser")
+  password      String
   role          Role    @default(BASIC)
   Punch         Punch[]
 }
