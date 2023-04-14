@@ -3,7 +3,7 @@ const userController = {
     res.render('signin')
   },
   signIn: (req, res) => {
-    res.redirect('/')
+    res.redirect('/punch')
   }
 }
 
