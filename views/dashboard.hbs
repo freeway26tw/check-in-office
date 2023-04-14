@@ -1,4 +1,4 @@
-<form action="/punch" method="POST">
+<form action="/users/{{loginUser.id}}/punch" method="POST">
   <button class="btn btn-primary btn-block" type="submit">打卡</button>
 </form>
 <form action="/users/{{loginUser.id}}/edit" method="GET">

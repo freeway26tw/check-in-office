@@ -27,7 +27,6 @@ const userController = {
   },
   putUser: async (req, res, next) => {
     const { employeeCode, password } = req.body
-    console.log(req.body)
     if (!password) throw new Error('Password is required!')
     await prisma.user.update({
       where: {
@@ -39,6 +38,20 @@ const userController = {
     })
     req.flash('success_messages', '使用者資料編輯成功')
     res.redirect('/dashboard')
+  },
+  punch: async (req, res, next) => {
+    try {
+      await prisma.punch.create({
+        data: {
+          userId: getUser(req).id,
+          createdAt: new Date().now
+        }
+      })
+      res.redirect('back')
+    }
+    catch (err) {
+      next(err)
+    }
   }
 }
 
