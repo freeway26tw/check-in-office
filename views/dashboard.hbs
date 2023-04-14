@@ -1,4 +1,11 @@
 <form action="/users/{{loginUser.id}}/punch" method="POST">
+  <div class="form-group">
+    <label for="punchType">打卡類型</label>
+    <select class="form-control" id="punchType" name="punchType" required>
+      <option value="in">上班打卡</option>
+      <option value="out">下班打卡</option>
+    </select>
+  </div>
   <button class="btn btn-primary btn-block" type="submit">打卡</button>
 </form>
 <form action="/users/{{loginUser.id}}/edit" method="GET">

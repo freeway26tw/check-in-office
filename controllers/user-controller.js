@@ -47,10 +47,12 @@ const userController = {
     res.redirect('/dashboard')
   },
   punch: async (req, res, next) => {
+    const { punchType } = req.body
     try {
       await prisma.punch.create({
         data: {
           userId: getUser(req).id,
+          type : punchType,
           createdAt: new Date().now
         }
       })
