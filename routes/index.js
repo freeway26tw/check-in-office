@@ -10,6 +10,6 @@ router.post('/signin', passport.authenticate('local', { failureRedirect: '/signi
 
 router.get('/users/:id/edit', userController.editUser)
 
-router.get('/punch', punchController.getPunch)
+router.get('/dashboard', punchController.getDashboard)
 
 module.exports = router

@@ -36,9 +36,5 @@ app.use((req, res, next) => {
 })
 app.use(routes)
 
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
-
 app.listen(port, () => console.log(`Punch app listening on port ${port}!
 Press CTRL + C to stop the process.`))

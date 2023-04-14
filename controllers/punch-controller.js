@@ -1,6 +1,6 @@
 const punchController = {
-  getPunch: (req, res) => {
-    res.render('punch')
+  getDashboard: (req, res) => {
+    res.render('dashboard')
   }
 }
 
