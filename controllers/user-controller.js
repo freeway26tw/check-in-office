@@ -18,36 +18,28 @@ const userController = {
       res.redirect('/signin')
     })
   },
-  editUser: async (req, res, next) => {
+  profile: async (req, res, next) => {
+      res.render('users/profile', { user: getUser(req) })
+  },
+  putUser: async (req, res, next) => {
+    const { employeeCode, password, confirmPassword } = req.body
     try {
-      const user = await prisma.user.findUnique({
+      if (!password) throw new Error('需填寫密碼')
+      if (password !== confirmPassword) throw new Error('密碼不相符')
+      await prisma.user.update({
         where: {
           id: getUser(req).id
         },
-        select: {
-          employeeCode: true
+        data: {
+          password: bcrypt.hashSync(password, 10)
         }
       })
-      if (!user) throw new Error('沒有此使用者')
-      return res.render('users/edit', { user })
+      req.flash('success_messages', '使用者資料編輯成功')
+      res.redirect('/dashboard')
     }
     catch (err) {
       next(err)
     }
-  },
-  putUser: async (req, res, next) => {
-    const { employeeCode, password } = req.body
-    if (!password) throw new Error('Password is required!')
-    await prisma.user.update({
-      where: {
-        id: getUser(req).id
-      },
-      data: {
-        password: bcrypt.hashSync(password, 10)
-      }
-    })
-    req.flash('success_messages', '使用者資料編輯成功')
-    res.redirect('/dashboard')
   },
   punch: async (req, res, next) => {
     const { punchType } = req.body
