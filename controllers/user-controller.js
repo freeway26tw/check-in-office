@@ -43,7 +43,6 @@ const userController = {
   },
   punch: async (req, res, next) => {
     const { punchType } = req.body
-    console.log(getUser(req))
     try {
       await prisma.punch.create({
         data: {
