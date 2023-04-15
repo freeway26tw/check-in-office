@@ -50,6 +50,9 @@ passport.deserializeUser(async (id, cb) => {
           where: {
             createdAt: {
               gte: new Date(today - offset * 60000 - 3 * 60 * 60000)
+            },
+            type: {
+              equals: "in"
             }
           },
           orderBy: {
