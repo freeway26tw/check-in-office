@@ -17,7 +17,7 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Punch" (
     "id" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMPTZ(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "type" "Type" NOT NULL,
     "userId" TEXT NOT NULL,
 

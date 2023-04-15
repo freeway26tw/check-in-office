@@ -33,9 +33,29 @@ passport.serializeUser((user, cb) => {
 })
 passport.deserializeUser(async (id, cb) => {
   try {
+    const today = new Date().setHours(0, 0, 0, 0)
+    const offset = new Date().getTimezoneOffset()
     const user = await prisma.user.findUnique({
       where: {
         id
+      },
+      select: {
+        id: true,
+        employeeCode: true,
+        Punch: {
+          take: 1,
+          select: {
+            createdAt: true
+          },
+          where: {
+            createdAt: {
+              gte: new Date(today - offset * 60000 - 3 * 60 * 60000)
+            }
+          },
+          orderBy: {
+            createdAt: "asc"
+          }
+        }
       }
     })
     return cb(null, user)

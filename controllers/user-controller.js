@@ -23,6 +23,9 @@ const userController = {
       const user = await prisma.user.findUnique({
         where: {
           id: getUser(req).id
+        },
+        select: {
+          employeeCode: true
         }
       })
       if (!user) throw new Error('沒有此使用者')
@@ -52,10 +55,11 @@ const userController = {
       await prisma.punch.create({
         data: {
           userId: getUser(req).id,
-          type : punchType,
+          type: punchType,
           createdAt: new Date().now
         }
       })
+      req.flash('success_messages', '打卡成功')
       res.redirect('back')
     }
     catch (err) {
