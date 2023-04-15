@@ -11,20 +11,21 @@ const session = require('express-session')
 const passport = require('./config/passport')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 
+const calendar = require('fullcalendar')
+const twLocale = require('@fullcalendar/core/locales-all')
+
 const { getUser } = require('./helpers/auth-helpers')
 const routes = require('./routes')
 
 const app = express()
 const port = process.env.PORT || 3000
 
-const SESSION_SECRET = 'secret'
-
 app.engine('.hbs', engine({ extname: '.hbs' }))
 app.set('view engine', '.hbs')
 app.set('views', './views')
 
 app.use(express.urlencoded({ extended: true }))
-app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: false }))
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
