@@ -1,11 +1,16 @@
 <div class="row">
   <div class="col-6 d-flex flex-column">
     <div class="card dashboard-card fw-bold mb-2">
-      {{#if checkHoliday}}
-      <p>今天不用打卡喔</p>
-      {{else}}
-      <p>Heloo</p>
+      {{!-- {{#if checkHoliday}} --}}
+      {{!-- <p>今天不用打卡喔</p> --}}
+      {{!-- {{else}} --}}
+      {{#if punchDate}}
+      <p>下班已打卡，本日工時：{{punchTimeCalc loginUser.Punch.[0].createdAt punchDate.createdAt}}</p>
       {{/if}}
+      {{#if loginUser.Punch}}
+      <p>上班已打卡</p>
+      {{/if}}
+      {{!-- {{/if}} --}}
     </div>
     <div class="card mb-2">
       <form action="/users/{{loginUser.id}}/punch" method="POST">

@@ -26,6 +26,7 @@
     "express-session": "^1.17.3",
     "fullcalendar": "^6.1.5",
     "method-override": "^3.0.0",
+    "moment": "^2.29.4",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "prisma": "^4.12.0"
