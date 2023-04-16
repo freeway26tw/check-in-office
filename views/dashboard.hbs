@@ -1,21 +1,35 @@
-<form action="/users/{{loginUser.id}}/punch" method="POST">
-  <div class="form-group">
-    {{!-- {{#if checkHoliday}}
-    <p>今天不用打卡喔</p>
-    {{else}} --}}
-    <label for="punchType">打卡類型</label>
-    <select class="form-control" id="punchType" name="punchType" required>
-      {{#if loginUser.Punch}}
-      <option value="out">下班打卡</option>
+<div class="row">
+  <div class="col-6 d-flex flex-column">
+    <div class="card dashboard-card fw-bold mb-2">
+      {{#if checkHoliday}}
+      <p>今天不用打卡喔</p>
       {{else}}
-      <option value="in">上班打卡</option>
+      <p>Heloo</p>
       {{/if}}
-    </select>
-    <button class="btn btn-primary btn-block" type="submit">打卡</button>
-    <p>今天上班打卡時間：{{loginUser.Punch.[0].createdAt}}</p>
-    <p>今天下班打卡時間：{{punchDate.createdAt}}</p>
-    {{!-- {{/if}} --}}
+    </div>
+    <div class="card mb-2">
+      <form action="/users/{{loginUser.id}}/punch" method="POST">
+        <div class="form-group">
+          {{#if loginUser.Punch}}
+          <input type="hidden" readonly name="punchType" id="punchType" value="out">
+          <button class="btn btn-primary btn-block w-100 dashboard-button" type="submit" {{#if checkHoliday}} disabled
+            {{/if}}>下班打卡</button>
+          {{else}}
+          <input type="hidden" readonly name="punchType" id="punchType" value="in">
+          <button class="btn btn-primary btn-block w-100 dashboard-button" type="submit" {{#if checkHoliday}} disabled
+            {{/if}}>上班打卡</button>
+          {{/if}}
+        </div>
+      </form>
+    </div>
+    <div class="card dashboard-card mb-2">
+      {{#if checkHoliday}}{{else}}<p>今日上班打卡時間：{{loginUser.Punch.[0].createdAt}}</p>{{/if}}
+    </div>
+    <div class="card dashboard-card">
+      {{#if checkHoliday}}{{else}}<p>今日下班打卡時間：{{punchDate.createdAt}}</p>{{/if}}
+    </div>
   </div>
-</form>
-
-<div id='calendar'></div>
+  <div class="col-6">
+    <div id='calendar'></div>
+  </div>
+</div>

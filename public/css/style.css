@@ -50,3 +50,38 @@ a {
 .fc .fc-bg-event {
   background: #678EFF;
 }
+
+.alert {
+  font-size: 1.25rem;
+  position: fixed;
+  top: 75px;
+  left: 25%;
+  width: 50%;
+  z-index: 100;
+}
+
+.alert-danger {
+  background-color: #CA2F2F;
+  color: white;
+}
+
+.alert-success {
+  background-color: #7CA741;
+  color: white;
+}
+
+.dashboard-button {
+  font-size: 4rem;
+  background-color: #FFD867;
+  color: #1B5F8A;
+}
+
+.dashboard-card {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 150px;
+  height: 150px;
+  border: none;
+  text-align: center;
+  background-color: rgb(255, 216, 103, 0.4);
+}

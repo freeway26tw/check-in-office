@@ -27,12 +27,12 @@
     });
   </script>
 
-<body class="d-flex flex-column h-100 bg-light">
+<body class="d-flex flex-column bg-light">
   <main class="flex-shrink-0" role="main">
     {{#if loginUser}}
     {{> header}}
     {{/if}}
-    <div class="container {{#if loginUser}} pt-5 {{/if}}">
+    <div class="container mx-0 px-0 {{#if loginUser}} pt-5 mx-5 px-5{{/if}}">
       <div class="{{#if loginUser}} pt-5 {{/if}}">
         {{> messages}}
         {{{body}}}
