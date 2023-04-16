@@ -8,7 +8,7 @@ const userController = {
   signInPage: (req, res) => {
     res.render('signin')
   },
-  signIn: (req, res) => {
+  signIn: async (req, res, next) => {
     res.redirect('/dashboard')
   },
   logout: async (req, res) => {
@@ -19,7 +19,7 @@ const userController = {
     })
   },
   profile: async (req, res, next) => {
-      res.render('users/profile', { user: getUser(req) })
+    res.render('users/profile', { user: getUser(req) })
   },
   putUser: async (req, res, next) => {
     const { employeeCode, password, confirmPassword } = req.body

@@ -1,8 +1,8 @@
 <form action="/users/{{loginUser.id}}/punch" method="POST">
   <div class="form-group">
-    {{#if checkHoliday}}
+    {{!-- {{#if checkHoliday}}
     <p>今天不用打卡喔</p>
-    {{else}}
+    {{else}} --}}
     <label for="punchType">打卡類型</label>
     <select class="form-control" id="punchType" name="punchType" required>
       {{#if loginUser.Punch}}
@@ -12,7 +12,9 @@
       {{/if}}
     </select>
     <button class="btn btn-primary btn-block" type="submit">打卡</button>
-    {{/if}}
+    <p>今天上班打卡時間：{{loginUser.Punch.[0].createdAt}}</p>
+    <p>今天下班打卡時間：{{punchDate.createdAt}}</p>
+    {{!-- {{/if}} --}}
   </div>
 </form>
 

@@ -16,14 +16,14 @@
       let calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'zh-tw',
+        timeZone: 'local',
         navLinks: true,
-        headerToolbar: {
-          left: 'prev, next, today',
-          center: 'title',
-          right: 'dayGridMonth, timeGridWeek, timeGridDay'
-        }
-      });
-      calendar.render();
+        eventDisplay: 'block',
+        events: [
+          {{ calendarData }}
+        ]
+    });
+    calendar.render();
     });
   </script>
 

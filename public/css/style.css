@@ -27,3 +27,26 @@
 a {
   color: #003489;
 }
+
+#calendar {
+  font-size: 14px;
+  background-color: white;
+  width: 700px;
+  height: 600px;
+  position: absolute;
+  top: 55%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  border: 1px solid gray;
+  border-top: 5px solid #ffd867;
+  box-shadow: 5px 10px 7px gray;
+  padding: 20px;
+}
+
+#calendar a {
+  text-decoration: none;
+}
+
+.fc .fc-bg-event {
+  background: #678EFF;
+}
