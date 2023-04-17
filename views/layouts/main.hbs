@@ -17,7 +17,11 @@
         initialView: 'dayGridMonth',
         locale: 'zh-tw',
         timeZone: 'local',
-        navLinks: true,
+        headerToolbar: {
+          left: 'prev,next',
+          center: 'title',
+          right: 'today,dayGridMonth'
+        },
         eventDisplay: 'block',
         events: [
           {{ calendarData }}

@@ -1,6 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const bcrypt = require('bcryptjs')
+const moment = require('moment')
 
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
@@ -33,8 +34,7 @@ passport.serializeUser((user, cb) => {
 })
 passport.deserializeUser(async (id, cb) => {
   try {
-    const today = new Date().setHours(0, 0, 0, 0)
-    const offset = new Date().getTimezoneOffset()
+    const startTime = moment().isAfter(moment('05:00', 'HH:mm').format()) ? moment('05:00', 'HH:mm').format() : moment('05:00', 'HH:mm').subtract(1, 'days').format()
     const user = await prisma.user.findUnique({
       where: {
         id
@@ -49,7 +49,7 @@ passport.deserializeUser(async (id, cb) => {
           },
           where: {
             createdAt: {
-              gte: new Date(today - offset * 60000 - 3 * 60 * 60000)
+              gte: startTime
             },
             type: {
               equals: "in"

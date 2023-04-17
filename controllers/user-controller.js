@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const prisma = new PrismaClient()
 const { getUser } = require('../helpers/auth-helpers')
 const { get } = require('../routes')
+const moment = require('moment')
 
 const userController = {
   signInPage: (req, res) => {
@@ -43,12 +44,23 @@ const userController = {
   },
   punch: async (req, res, next) => {
     const { punchType } = req.body
+    const today = moment().isAfter(moment('05:00', 'HH:mm')) ? moment().format('YYYYMMDD') : moment().subtract(1, 'days').format('YYYYMMDD')
+    console.log(getUser(req))
+    console.log(moment('05:00', 'HH:mm').format())
     try {
-      await prisma.punch.create({
-        data: {
+      await prisma.punch.upsert({
+        where: { id: getUser(req).Punch.id ? getUser(req).Punch.id : 0 },
+        update: {
           userId: getUser(req).id,
           type: punchType,
-          createdAt: new Date().now
+          date: today,
+          createdAt: moment().format()
+        },
+        create: {
+          userId: getUser(req).id,
+          type: punchType,
+          date: today,
+          createdAt: moment().format()
         }
       })
       req.flash('success_messages', '打卡成功')

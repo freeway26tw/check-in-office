@@ -20,6 +20,7 @@ model User {
 
 model Punch {
   id        String   @id @default(uuid())
+  date      String
   createdAt DateTime @default(now()) @db.Timestamptz(3)
   type      Type
   user      User     @relation(fields: [userId], references: [id])
