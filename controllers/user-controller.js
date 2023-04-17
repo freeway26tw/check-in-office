@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const prisma = new PrismaClient()
 const { getUser } = require('../helpers/auth-helpers')
 const { get } = require('../routes')
-const moment = require('moment')
+const dayjs = require('dayjs')
 
 const userController = {
   signInPage: (req, res) => {
@@ -44,23 +44,29 @@ const userController = {
   },
   punch: async (req, res, next) => {
     const { punchType } = req.body
-    const today = moment().isAfter(moment('05:00', 'HH:mm')) ? moment().format('YYYYMMDD') : moment().subtract(1, 'days').format('YYYYMMDD')
-    console.log(getUser(req))
-    console.log(moment('05:00', 'HH:mm').format())
+    const specificTime = '05:00:00';
+    const todaySpecificTime = dayjs(`${dayjs().format('YYYY-MM-DD')} ${specificTime}`)
+    const today = dayjs().isAfter(todaySpecificTime) ? dayjs().format('YYYYMMDD') : dayjs().subtract(1, 'days').format('YYYYMMDD')
     try {
       await prisma.punch.upsert({
-        where: { id: getUser(req).Punch.id ? getUser(req).Punch.id : 0 },
+        where: {
+          punchIdentifier: {
+            userId: getUser(req).id,
+            type: punchType,
+            date: today
+          }
+        },
         update: {
           userId: getUser(req).id,
           type: punchType,
           date: today,
-          createdAt: moment().format()
+          createdAt: dayjs().format()
         },
         create: {
           userId: getUser(req).id,
           type: punchType,
           date: today,
-          createdAt: moment().format()
+          createdAt: dayjs().format()
         }
       })
       req.flash('success_messages', '打卡成功')

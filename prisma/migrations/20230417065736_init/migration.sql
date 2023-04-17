@@ -28,5 +28,8 @@ CREATE TABLE "Punch" (
 -- CreateIndex
 CREATE UNIQUE INDEX "User_employeeCode_key" ON "User"("employeeCode");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Punch_date_type_userId_key" ON "Punch"("date", "type", "userId");
+
 -- AddForeignKey
 ALTER TABLE "Punch" ADD CONSTRAINT "Punch_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

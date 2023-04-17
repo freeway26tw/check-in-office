@@ -4,8 +4,8 @@
       {{#if checkHoliday}}
       <p>今天不用打卡喔</p>
       {{else}}
-      {{#if punchDate}}
-      <p>下班已打卡，本日工時：{{punchTimeCalc loginUser.Punch.[0].createdAt punchDate.createdAt}}</p>
+      {{#if punchOutTime}}
+      <p>{{punchTimeCalcStatus loginUser.Punch.[0].createdAt punchOutTime.createdAt}}</p>
       {{/if}}
       {{#if loginUser.Punch}}
       <p>上班已打卡</p>
@@ -29,7 +29,7 @@
       {{#if checkHoliday}}{{else}}<p>今日上班打卡時間：{{loginUser.Punch.[0].createdAt}}</p>{{/if}}
     </div>
     <div class="card dashboard-card">
-      {{#if checkHoliday}}{{else}}<p>今日下班打卡時間：{{punchDate.createdAt}}</p>{{/if}}
+      {{#if checkHoliday}}{{else}}<p>今日下班打卡時間：{{punchOutTime.createdAt}}</p>{{/if}}
     </div>
   </div>
   <div class="col-6">
