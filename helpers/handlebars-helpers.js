@@ -7,5 +7,8 @@ module.exports = {
   punchTimeCalcStatus: function (inTime, outTime) {
     const diff = dayjs(outTime).diff(dayjs(inTime), 'hour', true)
     return (diff > 8) ? "已成功打卡" : "缺勤"
+  },
+  json: function(context) {
+    return JSON.stringify(context);
   }
 }

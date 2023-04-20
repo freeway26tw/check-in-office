@@ -23,9 +23,8 @@
           right: 'today,dayGridMonth'
         },
         eventDisplay: 'block',
-        events: [
-          {{ calendarData }}
-        ]
+        events: {{{ json calendarData }}}
+        
     });
     calendar.render();
     });
