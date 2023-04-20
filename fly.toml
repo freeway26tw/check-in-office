@@ -8,6 +8,7 @@ primary_region = "nrt"
 
 [env]
   PORT = "8080"
+  TZ = "Asia/Taipei"
 
 [http_service]
   internal_port = 8080
@@ -21,5 +22,3 @@ primary_region = "nrt"
     interval = "15s"
     timeout = "2s"
     grace_period = "5s"
-[deploy]
-  release_command = "bash -c 'npx prisma migrate deploy && npx node prisma/seed.js'"
