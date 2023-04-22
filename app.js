@@ -11,8 +11,8 @@ const session = require('express-session')
 const passport = require('./config/passport')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 
-const calendar = require('fullcalendar')
-const twLocale = require('@fullcalendar/core/locales-all')
+require('fullcalendar')
+require('@fullcalendar/core/locales-all')
 
 const { getUser } = require('./helpers/auth-helpers')
 const routes = require('./routes')

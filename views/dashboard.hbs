@@ -17,10 +17,11 @@
         <div class="form-group">
           {{#if loginUser.Punch}}
           <input type="hidden" readonly name="punchType" id="punchType" value="out">
-          <button class="btn btn-primary btn-block w-100 dashboard-button" type="submit">下班打卡</button>
+          <button class="btn btn-primary btn-block w-100 dashboard-button" type="submit" {{#if
+            checkHoliday}}disabled{{/if}}>下班打卡</button>
           {{else}}
           <input type="hidden" readonly name="punchType" id="punchType" value="in">
-          <button class="btn btn-primary btn-block w-100 dashboard-button" type="submit">上班打卡</button>
+          <button class="btn btn-primary btn-block w-100 dashboard-button" type="submit" >上班打卡</button>
           {{/if}}
         </div>
       </form>
