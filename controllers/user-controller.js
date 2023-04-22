@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client')
 const bcrypt = require('bcryptjs')
 const prisma = new PrismaClient()
+const axios = require('axios')
 const { getUser } = require('../helpers/auth-helpers')
 const { get } = require('../routes')
 const dayjs = require('dayjs')
@@ -44,9 +45,16 @@ const userController = {
   },
   punch: async (req, res, next) => {
     const { punchType } = req.body
+    const thisYear = dayjs().format('YYYY')
     const specificTime = '05:00:00';
     const todaySpecificTime = dayjs(`${dayjs().format('YYYY-MM-DD')} ${specificTime}`)
     const today = dayjs().isAfter(todaySpecificTime) ? dayjs().format('YYYYMMDD') : dayjs().subtract(1, 'days').format('YYYYMMDD')
+    const calendarDate = await axios.get(`https://cdn.jsdelivr.net/gh/ruyut/TaiwanCalendar/data/${thisYear}.json`)
+    const checkTodayHoliday = calendarDate.data.filter(d => d.date === today)[0].isHoliday
+    if (checkTodayHoliday) {
+      req.flash('error_messages', '今天是假日喔')
+      return next()
+    }
     try {
       await prisma.punch.upsert({
         where: {
