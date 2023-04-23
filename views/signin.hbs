@@ -1,6 +1,8 @@
 <div class="login-container">
   <div class="logo-container vertical-center">
-    <img src="https://images.unsplash.com/photo-1535957998253-26ae1ef29506?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80" alt="">
+    <img
+      src="https://images.unsplash.com/photo-1535957998253-26ae1ef29506?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80"
+      alt="">
   </div>
   <div class=" vertical-center text-center">
     <div class="container">
@@ -9,7 +11,8 @@
           <form class="form-signin" action="/signin" method="POST">
             <h1 class="h3 mb-3 fw-normal">打卡系統</h1>
             <div class="form-floating">
-              <input type="text" class="form-control" id="employeeCode" placeholder="請輸入您的員工編號，例如 a001" name="employeeCode">
+              <input type="text" class="form-control" id="employeeCode" placeholder="請輸入您的員工編號，例如 a001"
+                name="employeeCode">
               <label for="employeeCode">員工編號</label>
             </div>
             <div class="form-floating">
@@ -17,9 +20,9 @@
               <label for="password">密碼</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">登入</button>
-            <p class="mt-5 mb-3 text-muted">
+            {{!-- <p class="mt-5 mb-3 text-muted">
               <a id="forgot-password" href="#">忘記密碼了嗎</a>
-            </p>
+            </p> --}}
           </form>
         </div>
       </div>
