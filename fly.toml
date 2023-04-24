@@ -22,3 +22,5 @@ primary_region = "nrt"
     interval = "15s"
     timeout = "2s"
     grace_period = "5s"
+[deploy]
+  release_command = "npx prisma migrate reset --force"
