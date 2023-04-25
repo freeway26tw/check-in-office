@@ -12,6 +12,9 @@ Daily punch in and out
 * Users can punch in and out
 * If holidays, users cannot punch since these days are not suitable for work.
 * Users can change their password
+* Users can punch in and out
+* If holidays, users cannot punch since these days are not suitable for work.
+* Users can change their password
 
 ## Prerequisites
 * [Git](https://git-scm.com/)
