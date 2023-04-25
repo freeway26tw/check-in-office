@@ -1,8 +1,11 @@
-# Twitter API
+# Punch Office Website
 
 ## General info
-
+Daily punch in and out
 ## Project features
+* Users can punch in and out
+* If holidays, users cannot punch since these days are not suitable for work.
+* Users can change their password
 
 ## Prerequisites
 * [Git](https://git-scm.com/)
