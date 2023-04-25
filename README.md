@@ -1,8 +1,17 @@
-# Twitter API
+# Punch Office Website
+You can visit the deploy website [here](https://punch.fly.dev/).
 
+![Log in page](/public/photos/login.png)
+![Dashboard](/public/photos/dashboard.png)
+
+If the error message shown wile logging, please wait for about 1 minutes to let the database server load.
+![Server Suspend](/public/photos/server_suspend.png)
 ## General info
-
+Daily punch in and out
 ## Project features
+* Users can punch in and out
+* If holidays, users cannot punch since these days are not suitable for work.
+* Users can change their password
 
 ## Prerequisites
 * [Git](https://git-scm.com/)
