@@ -6,6 +6,10 @@ You can visit the deploy website [here](https://punch.fly.dev/).
 
 If the error message shown wile logging, please wait for about 1 minutes to let the database server load.
 ![Server Suspend](/public/photos/server_suspend.png)
+
+You can see the punch history in the calendar on the right.
+Blue color means that you punch in and out above 8 hours, while the red means below 8 hours.
+![Punch Calendar](/public/photos/punch_calendar.png)
 ## General info
 Daily punch in and out
 ## Project features
