@@ -10,8 +10,12 @@ const today = dayjs().format('YYYYMMDD')
 const punchController = {
   getDashboard: async (req, res, next) => {
     try {
-      const calendarDate = await axios.get(`https://cdn.jsdelivr.net/gh/ruyut/TaiwanCalendar/data/${thisYear}.json`)
-      const checkHoliday = calendarDate.data.filter(d => d.date === today)[0].isHoliday
+      const { data } = await axios.get(`https://cdn.jsdelivr.net/gh/ruyut/TaiwanCalendar/data/${thisYear}.json`)
+      const editData = data.map(d => {
+        if (d.date.substring(4) === '0501') d.isHoliday = true
+        return d
+      })
+      const checkHoliday = editData.filter(d => d.date === today)[0].isHoliday
       const specificTime = '05:00:00';
       const todaySpecificTime = dayjs(`${dayjs().format('YYYY-MM-DD')} ${specificTime}`)
       const endTime = dayjs().isBefore(todaySpecificTime.format()) ? todaySpecificTime : todaySpecificTime.add(1, 'days')
