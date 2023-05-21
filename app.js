@@ -4,7 +4,6 @@ const { engine } = require('express-handlebars')
 const flash = require('connect-flash')
 const methodOverride = require('method-override')
 const session = require('express-session')
-const helmet = require('helmet')
 const passport = require('./config/passport')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 
@@ -23,7 +22,6 @@ app.set('view engine', '.hbs')
 app.set('views', './views')
 
 app.use([
-  helmet(),
   express.urlencoded({ extended: true }),
   session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }),
   passport.initialize(),
