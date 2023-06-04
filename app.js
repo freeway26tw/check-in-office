@@ -21,6 +21,8 @@ app.engine('.hbs', engine({ extname: '.hbs', helpers: handlebarsHelpers }))
 app.set('view engine', '.hbs')
 app.set('views', './views')
 
+console.log(process.env.PORT)
+
 app.use([
   express.urlencoded({ extended: true }),
   session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }),
